@@ -1,0 +1,11 @@
+.friends img{
+  width: 50px;
+  border-radius: 100px;
+}
+.friends{
+  font-size: 1em;
+  color: white;
+  display: grid;
+  justify-content: left;
+  padding: 5px;
+}

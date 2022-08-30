@@ -1,0 +1,14 @@
+
+.item {
+  color: fuchsia;
+  padding-top: 10px;
+}
+
+.item img {
+  width: 50px;
+  border-radius: 100px;
+}
+
+.heart {
+  color: red;
+}
