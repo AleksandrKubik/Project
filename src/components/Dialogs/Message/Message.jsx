@@ -3,17 +3,17 @@ import s from './Message.module.css';
 import {sendNewMessageActionCreator, upMessageActionCreator} from "../../../redux/dialogs-reducer";
 
 function Message(props) {
-    let messagesElements = props.messages
+    let messagesElements = props.messages.messagesData
         .map(m => <div key={m.id} className={s.message}>{m.message}</div>)
 //мапинг массива данных сообщений
+    let newMessageElement = React.createRef();
 
     let onSendMessageClick = () => {
-        props.dispatch(sendNewMessageActionCreator());
+        props.onSendMessageClick();
     }
     let onNewMessageChange = (e) => {
-        let body = e.target.value;
-        let action = upMessageActionCreator(body);
-        props.dispatch(action);
+        let body = newMessageElement.current.value;
+        props.onNewMessageChange(body);
     }
 
     return (
@@ -26,8 +26,9 @@ function Message(props) {
                     <div className={s.inputWrap}>
                         <textarea className={s.chatInput}
                                   placeholder='Enter your message'
+                                  ref={newMessageElement}
                                   onChange={onNewMessageChange}
-                                  value={props.newMessageBody}/>
+                                  value={props.messages.newMessageBody}/>
                         <button onClick={onSendMessageClick}>
                                     <span>
                                         <svg width="24" height="24" viewBox="0 0 24 24"
